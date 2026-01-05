@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previews - Cyan Diamond Studio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="previews-page">
+    <header>
+        <h1>Cyan Diamond Studio</h1>
+        <button class="menu-toggle" id="menu-toggle">☰</button>
+        <button class="theme-toggle" id="theme-toggle">🌙</button>
+        <button class="lang-toggle" id="lang-toggle">EN</button>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html" data-key="home">Home</a></li>
+                <li><a href="members.html" data-key="members">Members</a></li>
+                <li><a href="projects.html" data-key="projects">Projects</a></li>
+                <li><a href="previews.html" data-key="previews">Previews</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2 data-key="appsGames">Apps and Games Previews</h2>
+            <div id="previews-list" class="grid">
+                <!-- Previews will be loaded here dynamically -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p data-key="footer">&copy; 2026 Cyan Diamond Studio</p>
+    </footer>
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+    <button id="back-to-top" title="Back to Top">↑</button>
+    <div id="mascot">
+        <div class="mascot-body">💎</div>
+        <div class="speech-bubble" id="speech-bubble"></div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
