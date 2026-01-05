@@ -303,9 +303,11 @@ function initContactForm() {
             error.className = 'error';
             error.textContent = getErrorMessage(field);
             field.parentElement.appendChild(error);
-            field.style.borderColor = '#dc3545';
+            field.classList.add('field-error');
+            field.classList.remove('field-success');
         } else {
-            field.style.borderColor = '#28a745';
+            field.classList.add('field-success');
+            field.classList.remove('field-error');
         }
     }
 
@@ -313,7 +315,7 @@ function initContactForm() {
         const field = e.target;
         const errorElement = field.parentElement.querySelector('.error');
         if (errorElement) errorElement.remove();
-        field.style.borderColor = '#ddd';
+        field.classList.remove('field-error', 'field-success');
     }
 
     function validateForm() {
@@ -344,11 +346,16 @@ function initContactForm() {
 
 // Load data from localStorage
 function loadMembers() {
-    const members = JSON.parse(localStorage.getItem('members')) || [];
+    const defaultMembers = [
+        { name: "Amir", position: "AI Programmer", abilities: "AI programming and development", url: "https://github.com/Amir01m" },
+        { name: "Shayan", position: "Game Developer", abilities: "Game development and vibe coder", url: "https://github.com/ShayanHajibagher" },
+        { name: "Iman", position: "Programmer", abilities: "Learning programming", url: "https://github.com/iman-maleki" }
+    ];
+    const members = JSON.parse(localStorage.getItem('members')) || defaultMembers;
     const container = document.getElementById('members-list');
     if (container) {
         container.innerHTML = members.map(member =>
-            `<div class="member"><h3>${member.name}</h3><p>${member.abilities}</p></div>`
+            `<div class="member"><h3>${member.name}</h3><p><strong>Position:</strong> ${member.position}</p><p><strong>Abilities:</strong> ${member.abilities}</p><p><a href="${member.url}" target="_blank" class="member-link">Visit Profile</a></p></div>`
         ).join('');
     }
 }
