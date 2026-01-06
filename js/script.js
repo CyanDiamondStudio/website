@@ -116,6 +116,9 @@ function setLanguage(lang) {
     updateLangIcon();
     translatePage();
 
+    // Reload site settings to apply language-specific content
+    loadSiteSettings();
+
     // Update typing text if on home page - set instantly to avoid garbled text
     const typingText = document.getElementById('typing-text');
     if (typingText) {
@@ -365,7 +368,7 @@ function loadProjects() {
     const container = document.getElementById('projects-list');
     if (container) {
         container.innerHTML = projects.map(project =>
-            `<div class="project"><h3><a href="${project.link}" target="_blank">${project.name}</a></h3></div>`
+            `<div class="project"><h3><a href="${project.link}" target="_blank">${project.name}</a></h3>${project.description ? `<p>${project.description}</p>` : ''}</div>`
         ).join('');
     }
 }
@@ -378,6 +381,72 @@ function loadPreviews() {
             `<div class="preview"><h3>${preview.name}</h3><p>${preview.description}</p>${preview.media ? `<img src="${preview.media}" alt="${preview.name}" loading="lazy">` : ''}</div>`
         ).join('');
     }
+}
+
+function loadSiteSettings() {
+    const settings = JSON.parse(localStorage.getItem('siteSettings')) || {};
+
+    // Update hero content
+    const typingText = document.getElementById('typing-text');
+    if (typingText && settings.heroTitle) {
+        typingText.setAttribute('data-key', 'welcome');
+        translations.en.welcome = settings.heroTitle;
+        translations.fa.welcome = settings.heroTitle; // Use same title for both languages for now
+        typingText.textContent = settings.heroTitle;
+    }
+
+    const heroTextElement = document.querySelector('[data-key="heroText"]');
+    if (heroTextElement && settings.heroText) {
+        translations.en.heroText = settings.heroText;
+        translations.fa.heroText = settings.heroText; // Use same text for both languages for now
+        heroTextElement.textContent = settings.heroText;
+    }
+
+    // Update about text
+    const aboutTextElement = document.querySelector('#about p:first-of-type');
+    if (aboutTextElement && settings.aboutText) {
+        translations.en.aboutText = settings.aboutText;
+        translations.fa.aboutText = settings.aboutText; // Use same text for both languages for now
+        aboutTextElement.textContent = settings.aboutText;
+    }
+
+    // Update contact email
+    const emailLink = document.querySelector('#contact a[href^="mailto:"]');
+    if (emailLink && settings.email) {
+        emailLink.href = `mailto:${settings.email}`;
+        emailLink.textContent = settings.email;
+    }
+
+    // Update skills
+    const skillElements = document.querySelectorAll('.skill');
+    skillElements.forEach((skill, index) => {
+        const progressBar = skill.querySelector('.progress');
+        const span = skill.querySelector('span');
+        let percentage = 0;
+
+        switch(index) {
+            case 0: // App Development
+                percentage = settings.appDev || 40;
+                break;
+            case 1: // Game Design
+                percentage = settings.gameDesign || 30;
+                break;
+            case 2: // UI/UX Design
+                percentage = settings.uiUx || 20;
+                break;
+            case 3: // 3D Modeling
+                percentage = settings.modeling || 20;
+                break;
+        }
+
+        if (progressBar) {
+            progressBar.setAttribute('data-width', percentage);
+            progressBar.style.width = percentage + '%';
+        }
+        if (span) {
+            span.textContent = percentage + '%';
+        }
+    });
 }
 
 // Load content on page load
@@ -424,6 +493,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadMembers();
     loadProjects();
     loadPreviews();
+    loadSiteSettings();
 
     // Hide preloader after load
     window.addEventListener('load', () => {
