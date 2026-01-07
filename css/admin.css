@@ -1,0 +1,377 @@
+/* Admin Dashboard Styles */
+.admin-dark-mode header {
+    background: var(--admin-card-bg);
+    box-shadow: var(--admin-shadow);
+    border-radius: 0 0 10px 10px;
+    margin-bottom: 20px;
+    transition: background 0.3s ease;
+}
+
+.admin-dark-mode header h1 {
+    color: var(--admin-text-color);
+    transition: color 0.3s ease;
+}
+
+.admin-dark-mode main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--admin-card-bg);
+    border-radius: 8px;
+    box-shadow: var(--admin-shadow);
+    transition: background 0.3s ease;
+}
+
+.welcome-section h2 {
+    color: var(--admin-text-color);
+    margin-bottom: 10px;
+}
+
+.welcome-section p {
+    color: var(--admin-text-color);
+    opacity: 0.8;
+}
+
+.status-message {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.status-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+[data-admin-theme="dark"] .status-message.success {
+    background: #155724;
+    color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+[data-admin-theme="dark"] .status-message.error {
+    background: #721c24;
+    color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--admin-border-color);
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    color: var(--admin-text-color);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+    font-weight: bold;
+}
+
+.tab-btn.active {
+    border-bottom-color: var(--admin-accent-color);
+}
+
+@media (max-width: 768px) {
+    .tabs {
+        flex-direction: column;
+    }
+    .tab-btn {
+        text-align: left;
+    }
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h2 {
+    color: var(--admin-text-color);
+    margin-bottom: 20px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    align-items: start;
+}
+
+form > label {
+    grid-column: 1 / -1;
+    font-weight: bold;
+    color: var(--admin-text-color);
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid var(--admin-border-color);
+    border-radius: 4px;
+    background: var(--admin-bg-color);
+    color: var(--admin-text-color);
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+    grid-column: 1 / -1;
+}
+
+button[type="submit"] {
+    grid-column: 1 / -1;
+    justify-self: start;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background: var(--admin-accent-color);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+    background: var(--admin-accent-hover);
+}
+
+@media (max-width: 768px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+}
+
+#members-list, #projects-list, #previews-list {
+    margin-bottom: 20px;
+}
+
+.member-item, .project-item, .preview-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--admin-border-color);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background: var(--admin-bg-color);
+}
+
+.member-item div, .project-item div, .preview-item div {
+    flex: 1;
+}
+
+.edit-btn, .delete-btn {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.edit-btn {
+    background: var(--admin-accent-color);
+    color: white;
+}
+
+.edit-btn:hover {
+    background: var(--admin-accent-hover);
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #c82333;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+    font-weight: bold;
+}
+
+.tab-btn.active {
+    border-bottom-color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .tabs {
+        flex-direction: column;
+    }
+    .tab-btn {
+        text-align: left;
+    }
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h2 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    align-items: start;
+}
+
+form > label {
+    grid-column: 1 / -1;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+    grid-column: 1 / -1;
+}
+
+button[type="submit"] {
+    grid-column: 1 / -1;
+    justify-self: start;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background: var(--admin-accent-color);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.1s ease;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background: var(--admin-accent-hover);
+    transform: translateY(-1px);
+}
+
+.edit-btn:before { content: "✏️ "; }
+.delete-btn:before { content: "🗑️ "; }
+
+@media (max-width: 768px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+}
+
+button[type="submit"] {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+    align-self: flex-start;
+}
+
+button[type="submit"]:hover {
+    background: var(--accent-hover);
+}
+
+#members-list, #projects-list, #previews-list {
+    margin-bottom: 20px;
+}
+
+.member-item, .project-item, .preview-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background: var(--bg-color);
+}
+
+.member-item div, .project-item div, .preview-item div {
+    flex: 1;
+}
+
+.edit-btn, .delete-btn {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.edit-btn {
+    background: var(--accent-color);
+    color: white;
+}
+
+.edit-btn:hover {
+    background: var(--accent-hover);
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #c82333;
+}
